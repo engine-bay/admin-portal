@@ -1,4 +1,4 @@
-name: Continious Integration
+name: Continuous Integration
 
 on:
   push:
@@ -35,7 +35,7 @@ jobs:
     - run: dotnet reportgenerator -reports:./output.cobertura.xml -targetdir:"." -reporttypes:Clover -assemblyfilters:"-Humanizer;-Microsoft.TestPlatform*;-Microsoft.VisualStudio*;-xunit*;"
     - uses: paambaati/codeclimate-action@v3.2.0
       env:
-        CC_TEST_REPORTER_ID: 8d3194caa923bf994daeb58a9c3d333d53a7ccfb1545cb3ab98ebb953fd341f1
+        CC_TEST_REPORTER_ID: e8d6c7fefa3f9c5a4978e442b64cccb253e6ea21987bdd9ce1ff96f9e4cc2468
       with:
         coverageLocations: ${{github.workspace}}/Clover.xml:clover
   analyze:
