@@ -19,7 +19,6 @@ namespace EngineBay.AdminPortal
         public WebApplication AddMiddleware(WebApplication app)
         {
             app.UseStaticFiles();
-            app.UseRouting();
             return app;
         }
     }
