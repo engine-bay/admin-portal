@@ -1,5 +1,5 @@
-# EngineBay.ModuleTemplate
+# EngineBay.AdminPortal
 
-[![NuGet version](https://badge.fury.io/nu/EngineBay.ModuleTemplate.svg)](https://badge.fury.io/nu/EngineBay.ModuleTemplate)
+[![NuGet version](https://badge.fury.io/nu/EngineBay.AdminPortal.svg)](https://badge.fury.io/nu/EngineBay.AdminPortal)
 
-ModuleTemplate module for EngineBay published to [EngineBay.ModuleTemplate](https://www.nuget.org/packages/EngineBay.ModuleTemplate/) on NuGet.
+AdminPortal module for EngineBay published to [EngineBay.AdminPortal](https://www.nuget.org/packages/EngineBay.AdminPortal/) on NuGet.

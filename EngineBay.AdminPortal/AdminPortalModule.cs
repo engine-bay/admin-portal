@@ -1,8 +1,8 @@
-namespace EngineBay.ModuleTemplate
+namespace EngineBay.AdminPortal
 {
     using EngineBay.Core;
 
-    public class ModuleTemplateModule : IModule
+    public class AdminPortalModule : IModule
     {
         /// <inheritdoc/>
         public IServiceCollection RegisterModule(IServiceCollection services, IConfiguration configuration)
@@ -18,6 +18,8 @@ namespace EngineBay.ModuleTemplate
 
         public WebApplication AddMiddleware(WebApplication app)
         {
+            app.UseStaticFiles();
+            app.UseRouting();
             return app;
         }
     }
