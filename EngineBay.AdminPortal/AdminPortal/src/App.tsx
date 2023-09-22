@@ -1,4 +1,4 @@
-import { Admin, Resource, ShowGuesser, ListGuesser } from "react-admin";
+import { Admin, Resource, ShowGuesser } from "react-admin";
 import { AppLayout } from "./components/AppLayout";
 import { dataProvider, authProvider } from "./lib";
 import { WorkbookList, BlueprintList } from "./pages";

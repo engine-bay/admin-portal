@@ -7,12 +7,12 @@ const httpClient = fetchUtils.fetchJson;
 export const dataProvider = {
     getList: async (resource: string, params: GetListParams) => {
         const { page, perPage } = params.pagination;
-        const { field, order } = params.sort;
+        // const { field, order } = params.sort;
 
         const skip = (page - 1) * perPage;
         const limit = perPage;
-        const sortBy = "";
-        const sortOrder = 0;
+        // const sortBy = "";
+        // const sortOrder = 0;
         const query = {
             skip,
             limit,
