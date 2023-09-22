@@ -31,11 +31,13 @@
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <IsTrimmable>true</IsTrimmable>
+    <GenerateEmbeddedFilesManifest>true</GenerateEmbeddedFilesManifest>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="EngineBay.Core" Version="5.4.0" />
     <PackageReference Include="Microsoft.AspNetCore.SpaProxy" Version="7.0.1" />
+    <PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="7.0.11" />
     <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
@@ -43,37 +45,16 @@
   </ItemGroup>
 
   <ItemGroup>
-    <!-- Don't publish the SPA source files, but do show them in the project files list -->
-    <Content Remove="$(SpaRoot)**" />
-    <None Remove="$(SpaRoot)**" />
-    <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
+    <None Include="../README.md" Pack="true" PackagePath="\" />
+    <None Include="../LICENSE.txt" Pack="true" PackagePath="" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="../README.md" Pack="true" PackagePath="\" />
-    <None Include="../LICENSE.txt" Pack="true" PackagePath="" />
-    <!-- <None Include="$(SpaRoot)dist/**" Pack="true"
-    PackagePath="\contentFiles\any\any\wwwroot\admin-portal">
-      <PackageCopyToOutput>true</PackageCopyToOutput>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <CopyToPublishDirectory>Always</CopyToPublishDirectory>
-    </None> -->
-    <!-- <Content Include="(SpaRoot)dist/**" PackagePath="contentFiles\any\any;content"
-    CopyToOutputDirectory="Always" PackageCopyToOutput="true" /> -->
-    <Content Include="$(SpaRoot)dist/**" Pack="true" CopyToOutputDirectory="Always"/>
-    <!-- <Content Include="$(SpaRoot)dist/**">
-      <Link>%(RecursiveDir)%(Filename)%(Extension)</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content> -->
+    <EmbeddedResource Include="$(SpaRoot)dist/**" />
   </ItemGroup>
 
-  <!-- <ItemGroup>
-    <EmbeddedResource Include="(SpaRoot)dist/**" />
-  </ItemGroup> -->
 
-
-  <Target Name="EnsureNodeEnv" BeforeTargets="Build"
-    Condition="!Exists('$(SpaRoot)node_modules')">
+  <Target Name="EnsureNodeEnv" BeforeTargets="Build" Condition="!Exists('$(SpaRoot)node_modules')">
     <!-- Ensure Node.js is installed -->
     <Exec Command="node --version" ContinueOnError="true">
       <Output TaskParameter="ExitCode" PropertyName="ErrorCode" />
