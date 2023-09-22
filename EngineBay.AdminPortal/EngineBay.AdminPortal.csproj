@@ -43,9 +43,20 @@
   </ItemGroup>
 
   <ItemGroup>
+    <!-- Don't publish the SPA source files, but do show them in the project files list -->
+    <Content Remove="$(SpaRoot)**" />
+    <None Remove="$(SpaRoot)**" />
+    <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Include="../README.md" Pack="true" PackagePath="\" />
     <None Include="../LICENSE.txt" Pack="true" PackagePath="" />
-    <None Include="$(SpaRoot)dist/**" Pack="true" PackagePath="wwwroot\admin-portal" />
+    <None Include="$(SpaRoot)dist/**" Pack="true" PackagePath="wwwroot\admin-portal">
+      <PackageCopyToOutput>true</PackageCopyToOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToPublishDirectory>Always</CopyToPublishDirectory>
+    </None>
   </ItemGroup>
 
   <Target Name="EnsureNodeEnv" BeforeTargets="Build"
