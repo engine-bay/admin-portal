@@ -60,7 +60,7 @@
     </None> -->
     <!-- <Content Include="(SpaRoot)dist/**" PackagePath="contentFiles\any\any;content"
     CopyToOutputDirectory="Always" PackageCopyToOutput="true" /> -->
-    <Content Include="$(SpaRoot)dist/**" Pack="true" CopyToOutputDirectory="Always" Link="%(RecursiveDir)%(Filename)%(Extension)"/>
+    <Content Include="$(SpaRoot)dist/**" Pack="true" CopyToOutputDirectory="Always"/>
     <!-- <Content Include="$(SpaRoot)dist/**">
       <Link>%(RecursiveDir)%(Filename)%(Extension)</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
