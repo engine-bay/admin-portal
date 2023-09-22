@@ -1,13 +1,18 @@
-import { Admin, Resource, ListGuesser } from "react-admin";
-import jsonServerProvider from "ra-data-json-server";
+import { Admin, Resource, ShowGuesser, ListGuesser } from "react-admin";
 import { AppLayout } from "./components/AppLayout";
-
-const dataProvider = jsonServerProvider("https://jsonplaceholder.typicode.com");
+import { dataProvider, authProvider } from "./lib";
+import { WorkbookList, BlueprintList } from "./pages";
 
 const App = () => (
-  <Admin title="EngineBay Admin Portal" dataProvider={dataProvider} layout={AppLayout} disableTelemetry>
-    <Resource name="posts" list={ListGuesser} />
-    <Resource name="comments" list={ListGuesser} />
+  <Admin
+    title="EngineBay Admin Portal"
+    authProvider={authProvider}
+    dataProvider={dataProvider}
+    layout={AppLayout}
+    disableTelemetry
+  >
+    <Resource name="workbooks" list={WorkbookList} />
+    <Resource name="blueprints" list={BlueprintList} show={ShowGuesser} />
   </Admin>
 );
 
