@@ -25,7 +25,6 @@ import {
 } from "react-admin";
 import { RichTextInput } from "ra-input-rich-text";
 import { useTranslate } from "react-admin";
-import { DataTableField } from "../components";
 
 const TriggerListActions = () => (
   <TopToolbar>
