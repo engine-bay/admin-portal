@@ -3,7 +3,7 @@ import WorkIcon from "@mui/icons-material/Work";
 import LayersIcon from "@mui/icons-material/Layers";
 import FunctionsIcon from "@mui/icons-material/Functions";
 import DataObjectIcon from "@mui/icons-material/DataObject";
-import DataSetIcon from "@mui/icons-material/DataSet";
+import DataSetIcon from "@mui/icons-material/Dataset";
 import FlagIcon from "@mui/icons-material/Flag";
 import { useTranslate } from "react-admin";
 
