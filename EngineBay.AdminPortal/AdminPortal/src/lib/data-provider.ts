@@ -4,22 +4,30 @@ import { stringify } from 'query-string';
 const apiUrl = 'http://localhost:5050';
 const httpClient = fetchUtils.fetchJson;
 
+const sortOrderTypes = {
+    "ASC": 1,
+    "DESC": -1
+}
+
 export const dataProvider = {
     getList: async (resource: string, params: GetListParams) => {
+        const { search } = params.filter;
         const { page, perPage } = params.pagination;
-        // const { field, order } = params.sort;
+        const { field, order } = params.sort;
 
         const skip = (page - 1) * perPage;
         const limit = perPage;
-        // const sortBy = "";
-        // const sortOrder = 0;
+        const sortBy = field;
+        const sortOrder = sortOrderTypes[order] || 0;
+        
         const query = {
             skip,
             limit,
-            // sortBy,
-            // sortOrder
+            sortBy,
+            sortOrder,
+            search,
         };
-        console.log("params.filter: ", params.filter)
+        console.log("params: ", params)
         // const query = {
         //     sort: JSON.stringify([field, order]),
         //     range: JSON.stringify([(page - 1) * perPage, page * perPage - 1]),

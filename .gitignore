@@ -13,6 +13,7 @@ secrets/**/*
 
 # Code coverage
 code-coverage/**/*
+**/coverage/**/*
 Clover.xml
 output.cobertura.xml
 !code-coverage/Summary.json
