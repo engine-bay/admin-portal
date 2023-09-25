@@ -39,4 +39,11 @@ export const nl = {
     defaultValue: 'Standaardwaarde',
     edit: 'Bewerking',
     data: 'Gegevens',
+    create: 'Creëren',
+    attachments: 'Bijlagen',
+    alerts: {
+        info: {
+            workbookFileImport: "U kunt uw Excel .xlsx/.xls-bestanden importeren als blauwdrukken om snel aan de slag te gaan."
+        }
+    }
 };

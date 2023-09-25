@@ -39,4 +39,11 @@ export const en = {
     defaultValue: 'Default Value',
     edit: 'Edit',
     data: 'Data',
+    create: 'Create',
+    attachments: 'Attachments',
+    alerts: {
+        info: {
+            workbookFileImport: "You can import your Excel .xlsx/.xls files as Blueprints to get started quickly."
+        }
+    }
 };

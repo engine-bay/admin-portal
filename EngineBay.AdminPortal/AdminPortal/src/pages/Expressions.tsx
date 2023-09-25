@@ -8,7 +8,6 @@ import {
   RichTextField,
   SimpleForm,
   TextInput,
-  required,
   DateField,
   Show,
   ShowButton,
@@ -27,6 +26,7 @@ import {
 } from "react-admin";
 import { RichTextInput } from "ra-input-rich-text";
 import { useTranslate } from "react-admin";
+import { ExpressionInput } from "../components";
 
 const InputDataVariableBlueprintsCount = () => {
   const record = useRecordContext();
@@ -80,7 +80,11 @@ export const ExpressionList = () => {
     />,
   ];
   return (
-    <List filters={filters} actions={<ExpressionListActions />} title={translate("expressions")}>
+    <List
+      filters={filters}
+      actions={<ExpressionListActions />}
+      title={translate("expressions")}
+    >
       {isSmall ? (
         <SimpleListConfigurable
           primaryText={(record) => record.name}
@@ -130,13 +134,7 @@ export const ExpressionEdit = () => {
           source="objective"
           fullWidth
         />
-        <TextInput
-          label={translate("expression")}
-          multiline
-          source="expression"
-          validate={required()}
-          fullWidth
-        />
+        <ExpressionInput />
       </SimpleForm>
     </Edit>
   );
