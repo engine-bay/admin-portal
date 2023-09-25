@@ -1,4 +1,4 @@
-import { useMediaQuery, Theme } from "@mui/material";
+import { useMediaQuery, Theme, Alert } from "@mui/material";
 import {
   List,
   Datagrid,
@@ -24,9 +24,15 @@ import {
   ExportButton,
   FilterButton,
   SimpleListConfigurable,
+  Create,
+  FileField,
+  FileInput,
+  useCreate,
+  useRedirect,
 } from "react-admin";
 import { RichTextInput } from "ra-input-rich-text";
 import { useTranslate } from "react-admin";
+import { Blueprint, Workbook, importBlueprints } from "../lib";
 
 const BlueprintsCount = () => {
   const record = useRecordContext();
@@ -128,7 +134,6 @@ export const WorkbookEdit = () => {
         <RichTextInput
           label={translate("description")}
           source="description"
-          validate={required()}
           fullWidth
         />
       </SimpleForm>
@@ -169,5 +174,74 @@ export const WorkbookShow = () => {
         </TabbedShowLayout.Tab>
       </TabbedShowLayout>
     </Show>
+  );
+};
+
+type Attachment = {
+  rawFile: Blob;
+};
+
+type WorkbookImportFormData = {
+  name?: string;
+  description?: string;
+  attachments?: Attachment[];
+};
+
+export const WorkbookImport = () => {
+  const translate = useTranslate();
+  const [create] = useCreate();
+  const redirect = useRedirect();
+  const saveWorkbook = async (data: WorkbookImportFormData) => {
+    const { name, description, attachments } = data;
+
+    let blueprints: Blueprint[] = [];
+
+    if (attachments) {
+      for (const attachment of attachments) {
+        const attachmentBlueprints = await importBlueprints(attachment.rawFile);
+        blueprints = [...blueprints, ...attachmentBlueprints];
+      }
+    }
+
+    const workbook: Workbook = {
+      name,
+      description,
+      blueprints,
+    };
+
+    create("workbooks", { data: workbook });
+    redirect("/meta-data/workbooks");
+  };
+  return (
+    <Create title={translate("create")}>
+      <SimpleForm onSubmit={saveWorkbook}>
+        <TextInput
+          label={translate("name")}
+          source="name"
+          validate={required()}
+          fullWidth
+        />
+        <RichTextInput
+          label={translate("description")}
+          source="description"
+          fullWidth
+        />
+        <WrapperField>
+          <Alert severity="info" style={{ marginBottom: 16 }}>
+            {translate("alerts.info.workbookFileImport")}
+          </Alert>
+        </WrapperField>
+        <FileInput
+          label={translate("attachments")}
+          source="attachments"
+          multiple
+          options={{
+            accept: [".xlsx", ".xls"],
+          }}
+        >
+          <FileField source="src" title="title" />
+        </FileInput>
+      </SimpleForm>
+    </Create>
   );
 };

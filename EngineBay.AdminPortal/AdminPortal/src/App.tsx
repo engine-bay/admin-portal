@@ -1,4 +1,4 @@
-import { Admin, Resource, useTranslate } from "react-admin";
+import { Admin, useTranslate, Resource } from "react-admin";
 import { dataProvider, authProvider, i18nProvider } from "./lib";
 import { lazily } from "react-lazily";
 import { QueryClient } from "react-query";
@@ -6,7 +6,7 @@ import { lightTheme, darkTheme } from "./themes";
 
 const { AppLayout } = lazily(() => import("./components/AppLayout"));
 
-const { WorkbookList, WorkbookEdit, WorkbookShow } = lazily(
+const { WorkbookList, WorkbookEdit, WorkbookShow, WorkbookImport } = lazily(
   () => import("./pages/Workbooks")
 );
 const { BlueprintList, BlueprintEdit, BlueprintShow } = lazily(
@@ -63,6 +63,7 @@ const App = () => {
         list={WorkbookList}
         edit={WorkbookEdit}
         show={WorkbookShow}
+        create={WorkbookImport}
         recordRepresentation={(record) => record.name}
       />
       <Resource

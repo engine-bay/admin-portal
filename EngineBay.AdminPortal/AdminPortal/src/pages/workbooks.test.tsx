@@ -1,7 +1,7 @@
 import { AdminContext, Resource } from "react-admin";
 import { render, screen } from "@testing-library/react";
 import { expect, test } from "vitest";
-import { WorkbookEdit, WorkbookList, WorkbookShow } from ".";
+import { WorkbookEdit, WorkbookImport, WorkbookList, WorkbookShow } from ".";
 
 test("Workbooks index page should render", async () => {
   render(
@@ -11,6 +11,7 @@ test("Workbooks index page should render", async () => {
         list={WorkbookList}
         edit={WorkbookEdit}
         show={WorkbookShow}
+        create={WorkbookImport}
         recordRepresentation={(record) => record.name}
       />
     </AdminContext>
