@@ -1,20 +1,13 @@
-export enum DataVariableType {
-    FLOAT = "float",
-    STRING = "string",
-    BOOL = "bool",
-    DATETIME = "datetime",
-    DATATABLE = "datatable"
-}
+import { DataVariableType } from "../enums";
 
-
-export interface Workbook {
+export type Workbook = {
     id?: string;
     name?: string;
     description?: string;
     blueprints: Blueprint[]
 }
 
-export interface Blueprint {
+export type Blueprint = {
     id?: string;
     name: string;
     description?: string;
@@ -24,7 +17,7 @@ export interface Blueprint {
     triggerBlueprints: TriggerBlueprint[];
 }
 
-export interface ExpressionBlueprint {
+export type ExpressionBlueprint = {
     id?: string;
     expression: string;
     objective: string;
@@ -33,13 +26,13 @@ export interface ExpressionBlueprint {
     outputDataVariableBlueprint: OutputDataVariableBlueprint;
 }
 
-export interface InputDataTableBlueprint {
+export type InputDataTableBlueprint = {
     id?: string;
     name: string;
     namespace: string;
 }
 
-export interface DataVariableBlueprint {
+export type DataVariableBlueprint = {
     id?: string;
     name: string;
     namespace: string;
@@ -48,7 +41,7 @@ export interface DataVariableBlueprint {
     defaultValue?: string;
 }
 
-export interface TriggerBlueprint {
+export type TriggerBlueprint = {
     id?: string;
     name: string;
     description?: string;
@@ -56,28 +49,28 @@ export interface TriggerBlueprint {
     outputDataVariableBlueprint: OutputDataVariableBlueprint;
 }
 
-export interface InputDataVariableBlueprint {
+export type InputDataVariableBlueprint = {
     id?: string;
     name: string;
     namespace: string;
     type: string;
 }
 
-export interface OutputDataVariableBlueprint {
+export type OutputDataVariableBlueprint = {
     id?: string;
     name: string;
     namespace: string;
     type: string;
 }
 
-export interface TriggerExpressionBlueprint {
+export type TriggerExpressionBlueprint = {
     id?: string;
     expression: string;
     objective: string;
     inputDataVariableBlueprint: InputDataVariableBlueprint
 }
 
-export interface DataTableBlueprint {
+export type DataTableBlueprint = {
     id?: string;
     name: string;
     namespace: string;
@@ -87,32 +80,23 @@ export interface DataTableBlueprint {
     dataTableRowBlueprints: DataTableRowBlueprint[];
 }
 
-export interface DataTableColumnBlueprint {
+export type DataTableColumnBlueprint = {
     id?: string;
     name: string;
     type: string;
 }
 
-export interface DataTableRowBlueprint {
+export type DataTableRowBlueprint = {
     id?: string;
     dataTableCellBlueprints: DataTableCellBlueprint[];
 }
 
-export interface DataTableCellBlueprint {
+export type DataTableCellBlueprint = {
     id?: string;
     key: string;
     name: string;
     namespace: string;
     value: string;
-}
-
-export const cellDataTypeMap: Record<string, DataVariableType> = {
-    b: DataVariableType.BOOL,
-    n: DataVariableType.FLOAT,
-    d: DataVariableType.DATETIME,
-    s: DataVariableType.STRING,
-    e: DataVariableType.STRING, //error
-    z: DataVariableType.STRING // stub (blank cell)
 }
 
 export type Cell = {
@@ -122,4 +106,13 @@ export type Cell = {
     value: string,
     type: DataVariableType,
     isDynamic: boolean
+}
+
+export const cellDataTypeMap: Record<string, DataVariableType> = {
+    b: DataVariableType.BOOL,
+    n: DataVariableType.FLOAT,
+    d: DataVariableType.DATETIME,
+    s: DataVariableType.STRING,
+    e: DataVariableType.STRING, //error
+    z: DataVariableType.STRING // stub (blank cell)
 }

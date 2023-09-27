@@ -1,5 +1,4 @@
 import { useMediaQuery, Theme } from "@mui/material";
-import { RichTextInput } from "ra-input-rich-text";
 import {
   List,
   Datagrid,
@@ -27,6 +26,8 @@ import {
   SimpleListConfigurable,
 } from "react-admin";
 import { useTranslate } from "react-admin";
+import { lazily } from "react-lazily";
+const { RichTextInput } = lazily(() => import("ra-input-rich-text"));
 
 const ExpressionBlueprintsCount = () => {
   const record = useRecordContext();

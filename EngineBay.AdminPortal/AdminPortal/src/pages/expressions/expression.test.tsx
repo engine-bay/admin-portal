@@ -1,21 +1,21 @@
 import { AdminContext, Resource } from "react-admin";
 import { render, screen } from "@testing-library/react";
 import { expect, test } from "vitest";
-import { TableEdit, TableList, TableShow } from ".";
+import { ExpressionEdit, ExpressionList, ExpressionShow } from "./Expressions";
 
-test("Tables index page should render", async () => {
+test("Expressions index page should render", async () => {
   render(
     <AdminContext>
       <Resource
-        name="data-table-blueprints"
-        list={TableList}
-        edit={TableEdit}
-        show={TableShow}
+        name="meta-data/Expressions"
+        list={ExpressionList}
+        edit={ExpressionEdit}
+        show={ExpressionShow}
         recordRepresentation={(record) => record.name}
       />
     </AdminContext>
   );
   screen.debug();
-  const items = await screen.findAllByText(/data-table-blueprints.empty/);
+  const items = await screen.findAllByText(/Expressions.empty/);
   expect(items).toHaveLength(1);
 });

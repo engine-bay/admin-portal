@@ -21,8 +21,9 @@ import {
   SimpleListConfigurable,
   SimpleShowLayout,
 } from "react-admin";
-import { RichTextInput } from "ra-input-rich-text";
 import { useTranslate } from "react-admin";
+import { lazily } from "react-lazily";
+const { RichTextInput } = lazily(() => import("ra-input-rich-text"));
 
 const VariableListActions = () => (
   <TopToolbar>

@@ -41,6 +41,12 @@ export const nl = {
     data: 'Gegevens',
     create: 'Creëren',
     attachments: 'Bijlagen',
+    studio: {
+        title: "Studio",
+        customizeLayout: "Pas de lay-out aan",
+        saveLayout: "Lay-out opslaan",
+        resetLayout: "Indeling opnieuw instellen"
+    },
     alerts: {
         info: {
             workbookFileImport: "U kunt uw Excel .xlsx/.xls-bestanden importeren als blauwdrukken om snel aan de slag te gaan."

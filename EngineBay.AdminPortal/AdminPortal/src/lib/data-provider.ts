@@ -1,7 +1,7 @@
 import { CreateParams, DeleteManyParams, DeleteParams, GetListParams, GetManyParams, GetManyReferenceParams, GetOneParams, UpdateManyParams, UpdateParams, fetchUtils } from 'react-admin';
 import { stringify } from 'query-string';
 
-const apiUrl = 'http://localhost:5050';
+const apiUrl = 'http://localhost:5050'; // todo override this with an env variable in dev mode, leave as a base URL for release
 const httpClient = fetchUtils.fetchJson;
 
 const sortOrderTypes = {

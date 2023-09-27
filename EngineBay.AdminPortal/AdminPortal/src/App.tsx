@@ -7,26 +7,26 @@ import { lightTheme, darkTheme } from "./themes";
 const { AppLayout } = lazily(() => import("./components/AppLayout"));
 
 const { WorkbookList, WorkbookEdit, WorkbookShow, WorkbookImport } = lazily(
-  () => import("./pages/Workbooks")
+  () => import("./pages")
 );
 const { BlueprintList, BlueprintEdit, BlueprintShow } = lazily(
-  () => import("./pages/Blueprints")
+  () => import("./pages")
 );
 const { ExpressionList, ExpressionEdit, ExpressionShow } = lazily(
-  () => import("./pages/Expressions")
+  () => import("./pages")
 );
 
 const { VariableList, VariableEdit, VariableShow } = lazily(
-  () => import("./pages/Variables")
+  () => import("./pages")
 );
 
-const { TableList, TableEdit, TableShow } = lazily(
-  () => import("./pages/Tables")
-);
+const { TableList, TableEdit, TableShow } = lazily(() => import("./pages"));
 
 const { TriggerList, TriggerEdit, TriggerShow } = lazily(
-  () => import("./pages/Triggers")
+  () => import("./pages")
 );
+
+const { StudioList, StudioShow } = lazily(() => import("./pages"));
 
 const App = () => {
   // this sets up a basic client-side cache
@@ -54,7 +54,8 @@ const App = () => {
     >
       <Resource
         name="workbooks"
-        show={WorkbookShow}
+        list={StudioList}
+        show={StudioShow}
         recordRepresentation={(record) => record.name}
       />
       <Resource

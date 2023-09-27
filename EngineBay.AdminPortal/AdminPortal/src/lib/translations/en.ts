@@ -41,6 +41,12 @@ export const en = {
     data: 'Data',
     create: 'Create',
     attachments: 'Attachments',
+    studio: {
+        title: "Studio",
+        customizeLayout: "Customize layout",
+        saveLayout: "Save layout",
+        resetLayout: "Reset layout"
+    },
     alerts: {
         info: {
             workbookFileImport: "You can import your Excel .xlsx/.xls files as Blueprints to get started quickly."

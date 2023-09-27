@@ -1,7 +1,7 @@
 import { AdminContext, Resource } from "react-admin";
 import { render, screen } from "@testing-library/react";
 import { expect, test } from "vitest";
-import { WorkbookEdit, WorkbookImport, WorkbookList, WorkbookShow } from ".";
+import { WorkbookEdit, WorkbookImport, WorkbookList, WorkbookShow } from "./Workbooks";
 
 test("Workbooks index page should render", async () => {
   render(
