@@ -30,9 +30,10 @@ import {
   useCreate,
   useRedirect,
 } from "react-admin";
-import { RichTextInput } from "ra-input-rich-text";
 import { useTranslate } from "react-admin";
-import { Blueprint, Workbook, importBlueprints } from "../lib";
+import { Blueprint, Workbook, importBlueprints } from "../../lib";
+import { lazily } from "react-lazily";
+const { RichTextInput } = lazily(() => import("ra-input-rich-text"));
 
 const BlueprintsCount = () => {
   const record = useRecordContext();

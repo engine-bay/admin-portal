@@ -1,21 +1,21 @@
 import { AdminContext, Resource } from "react-admin";
 import { render, screen } from "@testing-library/react";
 import { expect, test } from "vitest";
-import { VariableEdit, VariableList, VariableShow } from ".";
+import { TableEdit, TableList, TableShow } from "./Tables";
 
-test("Variables index page should render", async () => {
+test("Tables index page should render", async () => {
   render(
     <AdminContext>
       <Resource
-        name="data-variable-blueprints"
-        list={VariableList}
-        edit={VariableEdit}
-        show={VariableShow}
+        name="data-table-blueprints"
+        list={TableList}
+        edit={TableEdit}
+        show={TableShow}
         recordRepresentation={(record) => record.name}
       />
     </AdminContext>
   );
   screen.debug();
-  const items = await screen.findAllByText(/data-variable-blueprints.empty/);
+  const items = await screen.findAllByText(/data-table-blueprints.empty/);
   expect(items).toHaveLength(1);
 });

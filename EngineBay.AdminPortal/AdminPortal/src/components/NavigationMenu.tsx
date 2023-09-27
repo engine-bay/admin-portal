@@ -5,6 +5,7 @@ import FunctionsIcon from "@mui/icons-material/Functions";
 import DataObjectIcon from "@mui/icons-material/DataObject";
 import DataSetIcon from "@mui/icons-material/Dataset";
 import FlagIcon from "@mui/icons-material/Flag";
+import AppRegistrationIcon from "@mui/icons-material/AppRegistration";
 import { useTranslate } from "react-admin";
 
 export const NavigationMenu = () => {
@@ -12,6 +13,11 @@ export const NavigationMenu = () => {
   return (
     <Menu>
       <Menu.DashboardItem primaryText={translate("dashboard")} />
+      <Menu.Item
+        to="/workbooks"
+        primaryText={translate("studio.title")}
+        leftIcon={<AppRegistrationIcon />}
+      />
       <Menu.Item
         to="/meta-data/workbooks"
         primaryText={translate("workbooks")}

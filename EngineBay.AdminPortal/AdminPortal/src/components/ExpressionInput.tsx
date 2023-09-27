@@ -1,7 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import Editor from "@monaco-editor/react";
 import { useTheme } from "react-admin";
 import { useController } from "react-hook-form";
+import { lazy } from "react";
+const Editor = lazy(() => import("@monaco-editor/react"));
 
 export const ExpressionInput = () => {
   const [theme] = useTheme();

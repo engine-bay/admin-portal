@@ -20,13 +20,13 @@ import {
   ExportButton,
   FilterButton,
   SimpleListConfigurable,
-  ArrayField,
-  Datagrid,
 } from "react-admin";
-import { RichTextInput } from "ra-input-rich-text";
 import { useTranslate } from "react-admin";
+import { DataTableField } from "../../components";
+import { lazily } from "react-lazily";
+const { RichTextInput } = lazily(() => import("ra-input-rich-text"));
 
-const TriggerListActions = () => (
+const TableListActions = () => (
   <TopToolbar>
     <SelectColumnsButton />
     <FilterButton />
@@ -35,7 +35,7 @@ const TriggerListActions = () => (
   </TopToolbar>
 );
 
-export const TriggerList = () => {
+export const TableList = () => {
   const isSmall = useMediaQuery<Theme>((theme) => theme.breakpoints.down("sm"));
   const translate = useTranslate();
 
@@ -51,8 +51,8 @@ export const TriggerList = () => {
   return (
     <List
       filters={filters}
-      actions={<TriggerListActions />}
-      title={translate("triggers")}
+      actions={<TableListActions />}
+      title={translate("tables")}
     >
       {isSmall ? (
         <SimpleListConfigurable
@@ -62,6 +62,7 @@ export const TriggerList = () => {
       ) : (
         <DatagridConfigurable rowClick="show">
           <TextField label={translate("name")} source="name" />
+          <TextField label={translate("namespace")} source="namespace" />
           <RichTextField
             label={translate("description")}
             source="description"
@@ -84,17 +85,23 @@ export const TriggerList = () => {
   );
 };
 
-export const TriggerEdit = () => {
+export const TableEdit = () => {
   const translate = useTranslate();
   return (
     <Edit
-      resource="trigger-blueprints"
-      title={`${translate("edit")} - ${translate("trigger")}`}
+      resource="data-table-blueprints"
+      title={`${translate("edit")} - ${translate("table")}`}
     >
       <SimpleForm sanitizeEmptyValues>
         <TextInput
           label={translate("name")}
           source="name"
+          validate={required()}
+          fullWidth
+        />
+        <TextInput
+          label={translate("namespace")}
+          source="namespace"
           validate={required()}
           fullWidth
         />
@@ -108,14 +115,15 @@ export const TriggerEdit = () => {
   );
 };
 
-export const TriggerShow = () => {
+export const TableShow = () => {
   const translate = useTranslate();
   return (
-    <Show resource="trigger-blueprints" title={translate("trigger")}>
+    <Show resource="data-table-blueprints" title={translate("table")}>
       <TabbedShowLayout>
         <TabbedShowLayout.Tab label={translate("summary")}>
           <TextField label={translate("identity")} source="id" />
           <TextField label={translate("name")} source="name" />
+          <TextField label={translate("namespace")} source="namespace" />
           <RichTextField
             label={translate("description")}
             source="description"
@@ -127,39 +135,8 @@ export const TriggerShow = () => {
             showTime
           />
         </TabbedShowLayout.Tab>
-        <TabbedShowLayout.Tab
-          label={translate("expressions")}
-          path="expressions"
-        >
-          <ArrayField label={false} source="triggerExpressionBlueprints">
-            <Datagrid bulkActionButtons={false} optimized>
-              <RichTextField
-                label={translate("objective")}
-                source="objective"
-              />
-              <TextField label={translate("expression")} source="expression" />
-              <TextField label={translate("inputVariable")} source="inputDataVariableBlueprint.name" />
-              <TextField label={translate("namespace")} source="inputDataVariableBlueprint.namespace" />
-              <TextField label={translate("type")} source="inputDataVariableBlueprint.type" />
-            </Datagrid>
-          </ArrayField>
-        </TabbedShowLayout.Tab>
-        <TabbedShowLayout.Tab
-          label={translate("outputDataVariables")}
-          path="outputDataVariableBlueprint"
-        >
-          <TextField
-            label={translate("name")}
-            source="outputDataVariableBlueprint.name"
-          />
-          <TextField
-            label={translate("namespace")}
-            source="outputDataVariableBlueprint.namespace"
-          />
-          <TextField
-            label={translate("type")}
-            source="outputDataVariableBlueprint.type"
-          />
+        <TabbedShowLayout.Tab label={translate("data")} path="data">
+          <DataTableField label={false}></DataTableField>
         </TabbedShowLayout.Tab>
       </TabbedShowLayout>
     </Show>

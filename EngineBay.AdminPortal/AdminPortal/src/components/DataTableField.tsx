@@ -6,19 +6,19 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 
-type DataTableFieldProps = {
+export type DataTableFieldProps = {
   label?: string | boolean;
 };
 
-type DataTableColumn = {
+export type DataTableColumn = {
   name: string;
 };
 
-type DataTableRow = {
+export type DataTableRow = {
   dataTableCellBlueprints: DataTableCell[];
 };
 
-type DataTableCell = {
+export type DataTableCell = {
   value: string;
 };
 

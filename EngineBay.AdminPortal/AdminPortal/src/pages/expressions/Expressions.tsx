@@ -24,9 +24,10 @@ import {
   SimpleListConfigurable,
   TopToolbar,
 } from "react-admin";
-import { RichTextInput } from "ra-input-rich-text";
 import { useTranslate } from "react-admin";
-import { ExpressionInput } from "../components";
+import { ExpressionInput } from "../../components";
+import { lazily } from "react-lazily";
+const { RichTextInput } = lazily(() => import("ra-input-rich-text"));
 
 const InputDataVariableBlueprintsCount = () => {
   const record = useRecordContext();

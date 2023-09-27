@@ -1,5 +1,6 @@
 import { utils, WorkBook as SheetJSWorkbook } from "xlsx";
-import { DataVariableType, Blueprint, DataVariableBlueprint, ExpressionBlueprint, TriggerBlueprint, InputDataVariableBlueprint, DataTableBlueprint, DataTableRowBlueprint, InputDataTableBlueprint, Cell, cellDataTypeMap } from './imports.types';
+import { Blueprint, DataVariableBlueprint, ExpressionBlueprint, TriggerBlueprint, InputDataVariableBlueprint, DataTableBlueprint, DataTableRowBlueprint, InputDataTableBlueprint, Cell, cellDataTypeMap } from './imports.types';
+import { DataVariableType } from "../enums";
 
 export const generateBlueprintsFromCells = (wb: SheetJSWorkbook, worksheetName: string, allCells: Cell[], cells: Cell[]) => {
 
