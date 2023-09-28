@@ -41,6 +41,7 @@ export const en = {
     data: 'Data',
     create: 'Create',
     attachments: 'Attachments',
+    sessions: 'Sessions',
     studio: {
         title: "Studio",
         customizeLayout: "Customize layout",

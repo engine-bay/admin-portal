@@ -35,7 +35,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="EngineBay.Core" Version="5.9.0" />
+    <PackageReference Include="EngineBay.Core" Version="6.1.0" />
     <PackageReference Include="Microsoft.AspNetCore.SpaProxy" Version="7.0.1" />
     <PackageReference Include="Microsoft.Extensions.FileProviders.Embedded" Version="7.0.11" />
     <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">

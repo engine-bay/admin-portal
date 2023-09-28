@@ -41,6 +41,7 @@ export const nl = {
     data: 'Gegevens',
     create: 'Creëren',
     attachments: 'Bijlagen',
+    sessions: "Sessies",
     studio: {
         title: "Studio",
         customizeLayout: "Pas de lay-out aan",

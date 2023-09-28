@@ -5,22 +5,9 @@ namespace EngineBay.AdminPortal
     using EngineBay.Core;
     using Microsoft.Extensions.FileProviders;
 
-    public class AdminPortalModule : IModule
+    public class AdminPortalModule : BaseModule
     {
-        /// <inheritdoc/>
-        public IServiceCollection RegisterModule(IServiceCollection services, IConfiguration configuration)
-        {
-            services.AddDirectoryBrowser();
-            return services;
-        }
-
-        /// <inheritdoc/>
-        public IEndpointRouteBuilder MapEndpoints(IEndpointRouteBuilder endpoints)
-        {
-            return endpoints;
-        }
-
-        public WebApplication AddMiddleware(WebApplication app)
+        public override WebApplication AddMiddleware(WebApplication app)
         {
             var currentAssembly = Assembly.GetExecutingAssembly();
             if (currentAssembly is null)
