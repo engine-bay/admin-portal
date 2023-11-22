@@ -33,7 +33,7 @@ jobs:
     - run: dotnet tool restore
     - run: dotnet coverage collect dotnet test --output ./output.cobertura.xml --output-format cobertura
     - run: dotnet reportgenerator -reports:./output.cobertura.xml -targetdir:"." -reporttypes:Clover -assemblyfilters:"-Humanizer;-Microsoft.TestPlatform*;-Microsoft.VisualStudio*;-xunit*;"
-    - uses: paambaati/codeclimate-action@v3.2.0
+    - uses: paambaati/codeclimate-action@v5.0.0
       env:
         CC_TEST_REPORTER_ID: e8d6c7fefa3f9c5a4978e442b64cccb253e6ea21987bdd9ce1ff96f9e4cc2468
       with:
